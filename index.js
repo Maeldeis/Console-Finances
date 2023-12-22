@@ -87,14 +87,24 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+var total = 0
+  
+for (let i = 0; i< finances.length; i++) {
+const arr = finances[i];
+total = total + arr[1];
+
+console.log(total);
+
+}
+
 // Initialise variables
 
-var monthCount = finances.length;
-let total = 0;
-var totalProfitLoss = 0;
-var netChangeProfits = [];
-var totalChangeProfits = 0;
-var greatestProfit = ["", 0];
-var greatestLoss = ["", 0];
-var posVariance = 0;
-var negVariance = 0;
+// var monthCount = finances.length;
+// let total = 0;
+// var totalProfitLoss = 0;
+// var netChangeProfits = [];
+// var totalChangeProfits = 0;
+// var greatestProfit = ["", 0];
+// var greatestLoss = ["", 0];
+// var posVariance = 0;
+// var negVariance = 0;
