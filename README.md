@@ -13,3 +13,4 @@ A JavaScript program that calculates the finaces of a given Array and displays i
 
 -To view data, open console in Dev Tools-
 
+![Final console display](console.png)
