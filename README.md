@@ -1,6 +1,7 @@
 # Console-Finances
 
 Week 4 challenge
+
 A JavaScript program that calculates the finaces of a given Array and displays it's data in the Console.
 
 |Summary:|
