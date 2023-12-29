@@ -1,4 +1,4 @@
-var finances = [
+const finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -87,24 +87,40 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-var total = 0
-  
-for (let i = 0; i< finances.length; i++) {
-const arr = finances[i];
-total = total + arr[1];
+const calculateTotalMonths = (data) => data.length;
 
-console.log(total);
+const calculateNetTotal = (data) =>
+  data.reduce((total, [, value]) => total + value, 0);
 
-}
+const calculateMonthlyChanges = (data) =>
+  data.slice(1).map(([, value], index) => value - data[index][1]);
 
-// Initialise variables
+const calculateTotalChange = (changes) =>
+  changes.reduce((total, change) => total + change, 0);
 
-// var monthCount = finances.length;
-// let total = 0;
-// var totalProfitLoss = 0;
-// var netChangeProfits = [];
-// var totalChangeProfits = 0;
-// var greatestProfit = ["", 0];
-// var greatestLoss = ["", 0];
-// var posVariance = 0;
-// var negVariance = 0;
+const calculateAverageChange = (totalChange, totalMonths) =>
+  (totalChange / (totalMonths - 1)).toFixed(2);
+
+const sortMonthlyChanges = (data, changes) =>
+  data.slice(1).map(([month, _], index) => [month, changes[index]])
+    .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+
+const displayFinances = (totalMonths, netTotal, averageChange, sortedMonthlyChanges) => {
+  const [worstMonth, worstAmount] = sortedMonthlyChanges[0];
+  const [bestMonth, bestAmount] = sortedMonthlyChanges[sortedMonthlyChanges.length - 1];
+
+  console.log(`Total Months: ${totalMonths}`);
+  console.log(`Net Total: $${netTotal}`);
+  console.log(`Average Change: $${averageChange}`);
+  console.log(`Greatest Increase in Profits/Losses: ${bestMonth} ($${bestAmount})`);
+  console.log(`Greatest Decrease in Profits/Losses: ${worstMonth} ($${worstAmount})`);
+};
+
+const totalMonths = calculateTotalMonths(finances);
+const netTotal = calculateNetTotal(finances);
+const monthlyChanges = calculateMonthlyChanges(finances);
+const totalChange = calculateTotalChange(monthlyChanges);
+const averageChange = calculateAverageChange(totalChange, totalMonths);
+const sortedMonthlyChanges = sortMonthlyChanges(finances, monthlyChanges);
+
+displayFinances(totalMonths, netTotal, averageChange, sortedMonthlyChanges);
