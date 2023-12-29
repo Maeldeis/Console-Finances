@@ -1,6 +1,6 @@
 # Console-Finances
 
-**~ Week 4 challenge ~**
+**Week 4 challenge**
 
 GitHub Link: https://github.com/Maeldeis/Console-Finances-Calculator
 
