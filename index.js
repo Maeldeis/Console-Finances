@@ -89,10 +89,12 @@ var finances = [
 
 const totalMonths = finances.length;
 
+
 var netProfits = 0;
 for (var i = 0; i < finances.length; i++) {
   netProfits += finances[i][1];
 }
+
 
 var totalChange = 0;
 var greatestIncreaseDate = finances[0][0];
@@ -100,11 +102,13 @@ var greatestIncreaseAmount = 0;
 var greatestDecreaseDate = finances[0][0];
 var greatestDecreaseAmount = 0;
 
+
 for (var i = 1; i < finances.length; i++) {
   var currentProfit = finances[i][1];
   var previousProfit = finances[i - 1][1];
   var changeInProfit = currentProfit - previousProfit;
   totalChange += changeInProfit;
+
 
   if (changeInProfit > greatestIncreaseAmount) {
     greatestIncreaseDate = finances[i][0];
@@ -114,6 +118,7 @@ for (var i = 1; i < finances.length; i++) {
     greatestDecreaseAmount = changeInProfit;
   }
 }
+
 
 const averageChange = totalChange / (finances.length - 1);
 
