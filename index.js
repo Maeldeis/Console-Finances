@@ -1,4 +1,4 @@
-let finances = [
+var finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -85,56 +85,42 @@ let finances = [
   ['Dec-2016', 60988],
   ['Jan-2017', 138230],
   ['Feb-2017', 671099]
-  ];
+];
 
-  // Step 1: Find the total number of elements (length) in the array.
-  let totalMonths = finances.length;
-  //console.log(totalMonths);
+const totalMonths = finances.length;
 
-  //  Step 2: Find the net profits/losses over the entire period
+var netProfits = 0;
+for (var i = 0; i < finances.length; i++) {
+  netProfits += finances[i][1];
+}
 
-  let netProfits = 0; //initialized a variable to hold the net profit/loss
-  for (let i = 0; i < finances.length; i++) { // iterate through the list of finances
-      netProfits += finances[i][1]; // sums up the total in the amount of net profit/loss after certain deductions are made
+var totalChange = 0;
+var greatestIncreaseDate = finances[0][0];
+var greatestIncreaseAmount = 0;
+var greatestDecreaseDate = finances[0][0];
+var greatestDecreaseAmount = 0;
+
+for (var i = 1; i < finances.length; i++) {
+  var currentProfit = finances[i][1];
+  var previousProfit = finances[i - 1][1];
+  var changeInProfit = currentProfit - previousProfit;
+  totalChange += changeInProfit;
+
+  if (changeInProfit > greatestIncreaseAmount) {
+    greatestIncreaseDate = finances[i][0];
+    greatestIncreaseAmount = changeInProfit;
+  } else if (changeInProfit < greatestDecreaseAmount) {
+    greatestDecreaseDate = finances[i][0];
+    greatestDecreaseAmount = changeInProfit;
   }
+}
 
+const averageChange = totalChange / (finances.length - 1);
 
-  //  Step 3: How do I find the average changes in Profit / Loss over the entire period?
-  let totalChange = 0; // initialize a variable to store the total change in the net profit/loss
-
-  //  Step 4: How do I find the greatest increase in Profit / Loss over the entire period?
-  //  Step 4a: Initialize variables for greatest increase and decrease
-  let greatestIncreaseDate = finances[0][0];
-  let greatestIncreaseAmount = 0;
-  let greatestDecreaseDate = finances[0][0];
-  let greatestDecreaseAmount = 0;
-
-  for (let i = 1; i < finances.length; i++) { // iterate through the list of finances, startting at the second month (since there is no cahnge in profit for the first month)
-      let currentProfit = finances[i][1]; // get the current month's proffit
-      let previousProfit = finances[i-1][1]; // get the previous month's profit
-      let changeInProfit = currentProfit - previousProfit; // calculate the change in profit between the current month and previous month
-      totalChange += changeInProfit; // add the change in profit to the total change
-
-      //  Step 4b: if the change in profit is greater than the greatest increase amount, update the greatest increase variables.
-      if (changeInProfit > greatestIncreaseAmount) {
-          greatestIncreaseDate = finances[i][0];
-          greatestIncreaseAmount = changeInProfit;
-
-      //  Step 5: If the change in profits is less than the current greatest decrease in profits, update the greatest decrease variables
-      } else if (changeInProfit < greatestDecreaseAmount) {
-          greatestDecreaseDate = finances[i][0];
-          greatestDecreaseAmount = changeInProfit;
-      }
-  }
-  // divide the total change in profits by the number of changes in profits
-  let averageChange = totalChange / (finances.length - 1);
-
-  
-
-  console.log('Financial Analysis');
-  console.log('----------------------------');
-  console.log(`Total Months: ${totalMonths};`);
-  console.log(`Total: $${netProfits};`);
-  console.log(`Average Change: $${averageChange.toFixed(2)};`);
-  console.log(`Greatest increase in profits in ${greatestIncreaseDate}: was ($${greatestIncreaseAmount});`);
-  console.log(`Greatest decrease in profits in ${greatestDecreaseDate}: was ($${greatestDecreaseAmount});`);
+console.log('Financial Analysis')
+console.log('---------------------------')
+console.log(`Total Months: ${totalMonths}`);
+console.log(`Total: $${netProfits}`);
+console.log(`Average Change: $${averageChange.toFixed(2)}`);
+console.log(`Greatest increase in profits/losses ${greatestIncreaseDate}: ($${greatestIncreaseAmount})`);
+console.log(`Greatest decrease in profits/losses ${greatestDecreaseDate}: ($${greatestDecreaseAmount})`);
