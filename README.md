@@ -2,7 +2,7 @@
 
 Week 4 challenge
 
-A JavaScript program that calculates the finaces of a given Array and displays it's data in the Console.
+A JavaScript console-based program designed to analyze the financial performance of a given array.
 
 |Summary:|
 
@@ -15,3 +15,4 @@ A JavaScript program that calculates the finaces of a given Array and displays i
 -To view data, open console in Dev Tools-
 
 ![Final console display](console.png)
+
