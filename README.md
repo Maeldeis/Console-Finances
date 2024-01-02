@@ -4,7 +4,7 @@
 
 GitHub Link: https://github.com/Maeldeis/Console-Finances-Calculator
 
-Deployed Live Link: https://maeldeis.github.io/Console-Finances-Calculator/
+Deployed Live Link: https://maeldeis.github.io/Console-Finances/
 
 A JavaScript console-based program designed to analyze the financial performance of a given array.
 

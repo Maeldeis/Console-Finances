@@ -89,19 +89,16 @@ var finances = [
 
 const totalMonths = finances.length;
 
-
 var netProfits = 0;
 for (var i = 0; i < finances.length; i++) {
   netProfits += finances[i][1];
 }
-
 
 var totalChange = 0;
 var greatestIncreaseDate = finances[0][0];
 var greatestIncreaseAmount = 0;
 var greatestDecreaseDate = finances[0][0];
 var greatestDecreaseAmount = 0;
-
 
 for (var i = 1; i < finances.length; i++) {
   var currentProfit = finances[i][1];
@@ -119,11 +116,10 @@ for (var i = 1; i < finances.length; i++) {
   }
 }
 
-
 const averageChange = totalChange / (finances.length - 1);
 
 console.log('Financial Analysis')
-console.log('---------------------------')
+console.log('---')
 console.log(`Total Months: ${totalMonths}`);
 console.log(`Total: $${netProfits}`);
 console.log(`Average Change: $${averageChange.toFixed(2)}`);
